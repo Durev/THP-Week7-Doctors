@@ -1,2 +1,27 @@
-<h1>Patients#new</h1>
-<p>Find me in app/views/patients/new.html.erb</p>
+<h1>Patients</h1>
+
+<!-- Creation form -->
+<h5>Create a new patient</h5>
+
+<form action="/signup" method="post">
+
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<label for="patient[first_name]">First name :</label>
+	<input type="text" name="patient[first_name]">
+	<label name="patient[last_name]">Last name :</label>
+	<input type="text" name="patient[last_name]">
+	<input type="submit" value="Create">
+</form>
+
+<br>
+<hr>
+
+<!-- List of patients -->
+<h5>Patients list</h5>
+
+<ul>
+	<% @patients.each do |patient| %>
+		<li><%= patient.first_name %> - <%= patient.last_name%></li>
+	<% end %>
+</ul>
